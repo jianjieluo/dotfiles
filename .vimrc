@@ -12,4 +12,5 @@ source ~/dotfiles/vim/config/display.vim
 source ~/dotfiles/vim/config/settings.vim
 source ~/dotfiles/vim/config/functions.vim
 source ~/dotfiles/vim/config/tempfiles.vim
-" source ~/dotfiles/vim/config/gconfig.vim
+
+source ~/dotfiles/vim/config/gconfig.vim
