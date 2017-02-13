@@ -4,7 +4,9 @@ nmap LE $
 " 设置快捷键将选中文本块复制至系统剪贴板
 vnoremap <leader>y "+y
 " 设置快捷键将系统剪贴板内容粘贴至 vim
-nmap <Leader>p "+p
+" nmap <Leader>p "+p
+" Preserve indentation while pasting text from the OS X clipboard 在粘贴OS X剪贴板中的文本时保留缩进
+noremap <leader>p :set paste<CR>:put *<CR>:set nopaste<CR>
 " 定义快捷键关闭当前分割窗口
 nmap <Leader>q :q<CR>
 " 定义快捷键保存当前窗口内容
