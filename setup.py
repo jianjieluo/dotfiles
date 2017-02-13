@@ -17,8 +17,20 @@ def ln_new_dotfiles(dotfile_list):
     for f in dotfile_list:
         os.system('ln -s {0}/dotfiles/{1} ~/{1}'.format(thisdir, f))
 
-if __name__ == '__main__':
+
+def main():
+    print "Check for basic softwares..."
+    os.system('sudo bash ./scripts/basicInstall.sh')
+    print "Try to config git..."
+    os.system('bash ./scripts/setupGit.sh')
+
+    print "Begin to ln the dotfiles..."
     dotfile_list = os.listdir('./dotfiles')
     clean_old_dotfiles(dotfile_list)
     ln_new_dotfiles(dotfile_list)
-    os.system('bash setupGit.sh')
+
+    print "Update global .gitconfig..."
+    os.system('bash ./scripts/setupGit.sh')
+
+if __name__ == '__main__':
+    main()
