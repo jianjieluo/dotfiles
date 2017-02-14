@@ -10,7 +10,7 @@ software_leak_filling() {
   fi
 }
 
-terminal_get_list=(git vim tmux zsh curl clang cmake tree ssh openssh-server)
+terminal_get_list=(git vim tmux zsh curl)
 
 for name in ${terminal_get_list[@]}; do
   software_leak_filling $name
