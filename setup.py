@@ -1,23 +1,37 @@
 #!/usr/bin/env
 
 import os
+import sys
 
-home_url = os.popen('echo $HOME').read().rstrip('\n')
-setup_url = os.popen('pwd').read().rstrip('\n')
+home_url = os.path.expanduser('~')
+setup_url = os.getcwd()
 
 
 def clean_old_dotfiles(dotfile_list):
-    home_list = os.listdir(home_url)
     for f in dotfile_list:
-        if f in home_list:
-            os.remove(home_url + '/' + f)
-            print ('Clean the old file :' + f)
+        check_url = os.path.join(home_url, f)
+        if os.path.exists(check_url):
+            os.remove(check_url)
 
 
 def ln_new_dotfiles(dotfile_list):
     for f in dotfile_list:
-        os.system(
-            'ln -s {0}/dotfiles/{1} {2}/{1}'.format(setup_url, f, home_url))
+        try:
+            os.system(
+                'ln -s {0}/dotfiles/{1} {2}/{1}'.format(setup_url, f, home_url))
+        except:
+            print "link %s failed!" % f
+
+
+def config_vim_tempfiles(vimconfig_dir):
+    tempfiles = ['.undo', '.swp', '.backup']
+    tempfiles_url = os.path.join(vimconfig_dir, 'tempfiles')
+    if not os.path.exists(tempfiles_url):
+        os.makedirs(tempfiles_url)
+    for each in tempfiles:
+        f_url = os.path.join(tempfiles_url, each)
+        if not os.path.exists(f_url):
+            os.makedirs(f_url)
 
 
 def config_terminal_utils(util_name):
@@ -35,6 +49,7 @@ def config_terminal_utils(util_name):
         init_vundle_cmd = "git clone https://github.com/VundleVim/Vundle.vim.git {0}/Vundle.vim".format(
             plugin_url)
         os.system(init_vundle_cmd)
+        config_vim_tempfiles(target)
     elif util_name == 'tmux':
         plugin_url = os.path.join(target, 'plugins')
         init_tpm_cmd = "git clone https://github.com/tmux-plugins/tpm {0}/tpm".format(
@@ -65,5 +80,12 @@ def initialize():
     print "Update global .gitconfig..."
     os.system('bash ./scripts/setupGit.sh')
 
+
+def clear_gitrepos_config():
+    os.system("rm -rf ./vim/bundle ./vim/tempfiles ./tmux/plugins")
+
 if __name__ == '__main__':
-    initialize()
+    if sys.argv[0] == 'test':
+        clear_gitrepos_config()
+    else:
+        initialize()
