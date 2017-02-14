@@ -81,11 +81,26 @@ def initialize():
     os.system('bash ./scripts/setupGit.sh')
 
 
+def personalize():
+    print "Begin to install nodejs 6.x ..."
+    os.system('sudo bash ./scripts/nodejs6Xinstall.sh')
+
+    print "Begin to install personal utils from apt..."
+    os.system('sudo bash ./scripts/personalInstall.sh')
+
+    print "Begin to download some good ubuntu-icons..."
+    os.system('sudo bash ./scripts/iconsInstall.sh')
+
+
 def clear_gitrepos_config():
     os.system("rm -rf ./vim/bundle ./vim/tempfiles ./tmux/plugins")
 
 if __name__ == '__main__':
-    if sys.argv[0] == 'test':
+    if sys.argv[1] == 'clean':
         clear_gitrepos_config()
     else:
         initialize()
+        if sys.argv[1] == 'personalize':
+            personalize()
+        else:
+            pass

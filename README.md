@@ -12,5 +12,11 @@ tmux: use tmux plugin:
 
 .tumx 与 .vim 的文件夹软连接还没有做好，需要手动进行tmux 和 vim插件的安装
 
+
+运行完了后请自行配置atom, 拼音输入法, mysql
+
 learn a lot from the following blog
 https://sanctum.geek.nz/arabesque/managing-dot-files-with-git/
+
+
+setup.py [clean, personalize]
