@@ -36,7 +36,13 @@ With no option, it will config some basic tools.
 
 ---
 
-## 3. Further Personal Config and Some References
+## 3. Notice
+
+1. When config the icons, it is needed to add ppa to the system so you need to press enter to confirm timely, or it will be blocked.
+
+---
+
+## 4. Further Personal Config and Some References
 
 As for me, I still need to config `atom editor` and `Chinese Pinyin Input` after using this tool, maybe I will make it auto in the future. Some references below are in Chinese.
 
