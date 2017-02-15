@@ -83,4 +83,11 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# make a easy alias for change ctrl and caps lock key
 alias ch='xmodmap ~/.Xmodmap'
+
+# make the seebi/dircolors-solarized auto reload
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+fi

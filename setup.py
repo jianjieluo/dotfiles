@@ -1,4 +1,4 @@
-#!/usr/bin/env
+#!/usr/bin/env python
 
 import os
 import sys
@@ -91,16 +91,32 @@ def personalize():
     print "Begin to download some good ubuntu-icons..."
     os.system('sudo bash ./scripts/iconsInstall.sh')
 
+    print "Begin to set Solarized color scheme for the working environment..."
+    os.system('sudo bash ./scripts/solarizedInstall.sh')
 
-def clear_gitrepos_config():
-    os.system("rm -rf ./vim/bundle ./vim/tempfiles ./tmux/plugins")
+
+def clean_gitrepos_config():
+    os.system("sudo rm -rf ./vim/bundle ./vim/tempfiles ./tmux/plugins")
+    os.system("sudo rm -rf ./third_party")
+
+
+def new_try():
+    # add new commands below
+    # when it is tested ok, move it to the personalize
+    pass
 
 if __name__ == '__main__':
-    if sys.argv[1] == 'clean':
-        clear_gitrepos_config()
-    else:
-        initialize()
-        if sys.argv[1] == 'personalize':
-            personalize()
+    l = len(sys.argv)
+    if l == 2:
+        if sys.argv[1] == 'clean':
+            clean_gitrepos_config()
+        elif sys.argv[1] == 'dev':
+            new_try()
         else:
-            pass
+            initialize()
+            if sys.argv[1] == 'personalize':
+                personalize()
+    elif l == 1:
+        initialize()
+    elif l > 2:
+        print "Too much commands argv!"

@@ -120,3 +120,8 @@ fi
 export PATH="$PATH://home/longj/iNodeClient"
 alias ch='xmodmap ~/.Xmodmap'
 
+
+# make the seebi/dircolors-solarized auto reload
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+fi
