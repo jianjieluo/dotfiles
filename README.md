@@ -44,7 +44,7 @@ With no option, it will config some basic tools.
 
 ## 4. Further Personal Config and Some References
 
-As for me, I still need to config `atom editor` and `Chinese Pinyin Input` after using this tool, maybe I will make it auto in the future. Some references below are in Chinese.
+As for me, I still need to manually install `atom editor` and `Chinese Pinyin Input` after using this tool, maybe I will make it auto in the future. Some references below are in Chinese.
 
 1. [在ubuntu上配置拼音输入法](http://blog.csdn.net/luojj26/article/details/51859117)
 2. [ubuntu 下源码编译vim的亲测方法](http://blog.csdn.net/luojj26/article/details/51338268)
