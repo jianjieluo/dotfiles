@@ -1,6 +1,6 @@
 # set gnome-terminal, tmux, guake balckboard to solarized color scheme
 
-apt-get install dconf-cli
+sudo apt-get install dconf-cli
 
 # set gnome-terminal solarized
 git clone https://github.com/Anthony25/gnome-terminal-colors-solarized.git ./third_party/gnome-terminal-colors-solarized

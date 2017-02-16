@@ -92,12 +92,12 @@ def personalize():
     os.system('sudo bash ./scripts/iconsInstall.sh')
 
     print "Begin to set Solarized color scheme for the working environment..."
-    os.system('sudo bash ./scripts/solarizedInstall.sh')
+    os.system('bash ./scripts/solarizedInstall.sh')
 
 
 def clean_gitrepos_config():
-    os.system("sudo rm -rf ./vim/bundle ./vim/tempfiles ./tmux/plugins")
-    os.system("sudo rm -rf ./third_party")
+    os.system("rm -rf ./vim/bundle ./vim/tempfiles ./tmux/plugins")
+    os.system("rm -rf ./third_party")
 
 
 def new_try():
@@ -113,10 +113,16 @@ if __name__ == '__main__':
         elif sys.argv[1] == 'dev':
             new_try()
         else:
-            initialize()
-            if sys.argv[1] == 'personalize':
-                personalize()
-    elif l == 1:
-        initialize()
+            print "Invalid argv."
+            print "Options: \'clean\', \'dev\' or no argv"
     elif l > 2:
         print "Too much commands argv!"
+    elif l == 1:
+        initialize()
+        print "Do you want to execute the personal setting? (yes/no) (Default is no)"
+        is_personalized = ''
+        choice = raw_input()
+        if choice == 'yes':
+            personalize()
+        else:
+            pass
