@@ -1,3 +1,13 @@
+#python file
+#================================================
+#      Filename: setup.py
+#
+#        Author: longj - luojj26@gmail.com
+#   Description: ---
+#   Head Create: 2017-02-16 22:05:33
+# Last Modified: 2017-02-16 22:11:13
+#================================================
+
 #!/usr/bin/env python
 
 import os
