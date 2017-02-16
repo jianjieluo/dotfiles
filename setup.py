@@ -2,16 +2,27 @@
 
 import os
 import sys
+import shutil
 
 home_url = os.path.expanduser('~')
 setup_url = os.getcwd()
 
 
+def check_and_clean_old_link(url):
+    if os.path.islink(url):
+        os.unlink(url)
+    else:
+        if os.path.exists(url):
+            if os.path.isdir(url):
+                shutil.rmtree(url)
+            else:
+                os.remove(url)
+
+
 def clean_old_dotfiles(dotfile_list):
     for f in dotfile_list:
         check_url = os.path.join(home_url, f)
-        if os.path.exists(check_url):
-            os.remove(check_url)
+        check_and_clean_old_link(check_url)
 
 
 def ln_new_dotfiles(dotfile_list):
@@ -37,10 +48,10 @@ def config_vim_tempfiles(vimconfig_dir):
 def config_terminal_utils(util_name):
     source = os.path.join(setup_url, util_name)
     target = os.path.join(home_url, '.' + util_name)
+    print str(target)
 
     # construct soft link
-    if os.path.exists(target):
-        os.unlink(target)
+    check_and_clean_old_link(target)
     os.symlink(source, target)
 
     # plugins initialization
