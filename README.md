@@ -60,3 +60,9 @@ As for me, I still need to manually install `atom editor` and `Chinese Pinyin In
 1. [New to manage dotfiles](https://sanctum.geek.nz/arabesque/managing-dot-files-with-git/)
 2. [在ubuntu上配置拼音输入法](http://blog.csdn.net/luojj26/article/details/51859117)
 3. [ubuntu 下源码编译vim的亲测方法](http://blog.csdn.net/luojj26/article/details/51338268)
+
+----
+## 5. My Config Result Overview
+![config_result](https://github.com/longjj/dotfiles/blob/master/wallpaper/screenshot.png)
+
+I hope it can give you help or inspiration!
