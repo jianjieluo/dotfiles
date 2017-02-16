@@ -23,6 +23,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'godlygeek/tabular'
 Plugin 'Lokaltog/vim-powerline'
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
+Plugin 'Raimondi/delimitMate'
 " 插件列表结束
 call vundle#end()
 filetype indent on
