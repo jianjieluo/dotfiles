@@ -115,6 +115,7 @@ if __name__ == '__main__':
         else:
             print "Invalid argv."
             print "Options: \'clean\', \'dev\' or no argv"
+            print "Run it again, please :)"
     elif l > 2:
         print "Too much commands argv!"
     elif l == 1:
@@ -124,5 +125,6 @@ if __name__ == '__main__':
         choice = raw_input()
         if choice == 'yes':
             personalize()
+            print "Personalized Done!!"
         else:
-            pass
+            print "initialization Process Finished !"
