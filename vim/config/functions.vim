@@ -35,7 +35,7 @@ func SetComment()
 	call append(3, head)
 	call append(4, head.'        Author: longj - luojj26@gmail.com')
 	call append(5, head.'   Description: ---')
-	call append(6, head.'        Create: '.strftime("%Y-%m-%d %H:%M:%S"))
+	call append(6, head.'   Head Create: '.strftime("%Y-%m-%d %H:%M:%S"))
 	call append(7, head.' Last Modified: '.strftime("%Y-%m-%d %H:%M:%S"))
 	call append(8, head.'================================================')
 endfunc
