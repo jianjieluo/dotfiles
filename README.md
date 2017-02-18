@@ -24,6 +24,7 @@
 2. You can also change the `personalInstall.sh` to set your favouraite utils. All files in `/scripts` may be called in the `setup.py` so you can modify them to meet your need.
 3. `/wallpaper` is just a directory to store several my favouraite commic heroes wallpapers as example. You can remove it if you don't like it.
 4. `/vim` and `/tmux` are the directories that store **vim** and **tmux** plugins or useful custom setting files.
+5. In `/vim`, there is a directory `/tempfiles` which contains three hidden directories `/.undo`, `/.swp` and `/.backup`. These directories collect all the temp files that vim create when you are using vim.
 
 ### 2) Eexecute Commands
 ```bash
