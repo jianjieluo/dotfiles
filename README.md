@@ -9,7 +9,7 @@
 4. Supply `server` config and `desktop` config. You can custom your setting.
 
 ## 1. Overview
-&ensp;&ensp;This repository contains my personal dotfiles and auto-setup tools through **python and bash** script. The master version is tested on **Ubuntu 16.04 LTS**. It may also work on other Debian or Ubuntu linux systems. When it goes to Mac, you may need to change some files in `/script` since I use `apt-get` to set the machine.
+&ensp;&ensp;This repository contains my personal dotfiles and auto-setup tools through **python and bash** script. The master version is tested on **Ubuntu 16.04 LTS**. It may also work on other Debian or Ubuntu linux systems. When it goes to Mac, you may need to modify the `config.py` to use the correspoding tool.
 
 &ensp;&ensp;It is welcomed to fork and change it for yourself. All you need to change is the personal setting config. Replacing some config with utils you prefer, then you can **use it to easily set up** a personalized environment when you move to a new machine or when you reinstall the system. ***I hope it can give all freshman an easy framework to start with***.
 
