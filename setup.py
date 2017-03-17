@@ -1,4 +1,4 @@
-#python file
+# python file
 #================================================
 #      Filename: setup.py
 #
@@ -10,110 +10,65 @@
 
 #!/usr/bin/env python
 
-import os
 import sys
-import shutil
+import os
+from setters import utils
+from setters import vimsetter
+from setters import tmuxsetter
 
 home_url = os.path.expanduser('~')
 setup_url = os.getcwd()
 
 
-def check_and_clean_old_link(url):
-    if os.path.islink(url):
-        os.unlink(url)
-    else:
-        if os.path.exists(url):
-            if os.path.isdir(url):
-                shutil.rmtree(url)
-            else:
-                os.remove(url)
-
-
 def clean_old_dotfiles(dotfile_list):
     for f in dotfile_list:
         check_url = os.path.join(home_url, f)
-        check_and_clean_old_link(check_url)
+        utils.check_and_clean_old_link(check_url)
 
 
 def ln_new_dotfiles(dotfile_list):
     for f in dotfile_list:
+        src = os.path.join(setup_url, 'dotfiles', f)
+        dst = os.path.join(home_url, f)
         try:
-            os.system(
-                'ln -s {0}/dotfiles/{1} {2}/{1}'.format(setup_url, f, home_url))
+            os.symlink(src, dst)
         except:
             print "link %s failed!" % f
 
 
-def config_vim_tempfiles(vimconfig_dir):
-    tempfiles = ['.undo', '.swp', '.backup']
-    tempfiles_url = os.path.join(vimconfig_dir, 'tempfiles')
-    if not os.path.exists(tempfiles_url):
-        os.makedirs(tempfiles_url)
-    for each in tempfiles:
-        f_url = os.path.join(tempfiles_url, each)
-        if not os.path.exists(f_url):
-            os.makedirs(f_url)
+def server_setup():
+    print "Check for basic softwares..."
+    utils.bash_config(setup_url, 'basicInstall.sh')
 
+    print "Try to config git..."
+    utils.bash_config(setup_url, 'setupGit.sh')
 
-def config_terminal_utils(util_name):
-    source = os.path.join(setup_url, util_name)
-    target = os.path.join(home_url, '.' + util_name)
-    print str(target)
+    print "Config the vim and tmux..."
+    vimsetter.config(setup_url, home_url)
+    tmuxsetter.config(setup_url, home_url)
 
-    # construct soft link
-    check_and_clean_old_link(target)
-    os.symlink(source, target)
-
-    # plugins initialization
-    if util_name == "vim":
-        plugin_url = os.path.join(target, 'bundle')
-        init_vundle_cmd = "git clone https://github.com/VundleVim/Vundle.vim.git {0}/Vundle.vim".format(
-            plugin_url)
-        os.system(init_vundle_cmd)
-        config_vim_tempfiles(target)
-    elif util_name == 'tmux':
-        plugin_url = os.path.join(target, 'plugins')
-        init_tpm_cmd = "git clone https://github.com/tmux-plugins/tpm {0}/tpm".format(
-            plugin_url)
-        os.system(init_tpm_cmd)
-
-
-def update_dotfiles_ln():
     print "Begin to ln the dotfiles..."
     dotfile_list = os.listdir('./dotfiles')
     clean_old_dotfiles(dotfile_list)
     ln_new_dotfiles(dotfile_list)
 
-
-def initialize():
-    print "Check for basic softwares..."
-    os.system('sudo bash ./scripts/basicInstall.sh')
-
-    print "Try to config git..."
-    os.system('bash ./scripts/setupGit.sh')
-
-    print "Config the vim and tmux..."
-    config_terminal_utils('vim')
-    config_terminal_utils('tmux')
-
-    update_dotfiles_ln()
-
     print "Update global .gitconfig..."
-    os.system('bash ./scripts/setupGit.sh')
+    utils.bash_config(setup_url, 'setupGit.sh')
 
-
-def personalize():
     print "Begin to install nodejs 6.x ..."
-    os.system('sudo bash ./scripts/nodejs6Xinstall.sh')
+    utils.bash_config(setup_url, 'nodejs6Xinstall.sh')
+
+
+def personal_desktop_setup():
 
     print "Begin to install personal utils from apt..."
-    os.system('sudo bash ./scripts/personalInstall.sh')
+    utils.bash_config(setup_url, 'personalInstall.sh')
 
     print "Begin to download some good ubuntu-icons..."
-    os.system('sudo bash ./scripts/iconsInstall.sh')
+    utils.bash_config(setup_url, 'iconsInstall.sh')
 
     print "Begin to set Solarized color scheme for the working environment..."
-    os.system('bash ./scripts/solarizedInstall.sh')
+    utils.bash_config(setup_url, 'solarizedInstall.sh')
 
 
 def clean_gitrepos_config():
@@ -133,19 +88,32 @@ if __name__ == '__main__':
             clean_gitrepos_config()
         elif sys.argv[1] == 'dev':
             new_try()
+        elif sys.argv[1] == 'server':
+            server_setup()
+            utils.clean_wallpaper(setup_url)
+        elif sys.argv[1] == 'desktop':
+            server_setup()
+
+            print "Do you want to delete the sample wallpapers? (yes/no) (Default is no)"
+            choice = raw_input()
+            if choice == 'yes':
+                utils.clean_wallpaper(setup_url)
+
+            print "Do you want to execute the personal setting? (yes/no) (Default is no)"
+            choice = raw_input()
+            if choice == 'yes':
+                personal_desktop_setup()
+                print "Personalized Done!!"
+            else:
+                print "initialization Process Finished !"
         else:
             print "Invalid argv."
-            print "Options: \'clean\', \'dev\' or no argv"
+            print "Options: \'clean\', \'dev\', 'server', 'desktop'"
             print "Run it again, please :)"
     elif l > 2:
         print "Too much commands argv!"
     elif l == 1:
-        initialize()
-        print "Do you want to execute the personal setting? (yes/no) (Default is no)"
-        is_personalized = ''
-        choice = raw_input()
-        if choice == 'yes':
-            personalize()
-            print "Personalized Done!!"
-        else:
-            print "initialization Process Finished !"
+        print "You should add an argv."
+        print "Invalid argv."
+        print "Options: \'clean\', \'dev\', 'server', 'desktop'"
+        print "Run it again, please :)"

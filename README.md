@@ -1,9 +1,15 @@
 # Dotfiles Auto Setting
 `Johnny Law`  `SYSU in Guangdong Province, China`
 
-## 1. Overview
+## 0. Change log
+### 2017.03.17
+1. Now you can modify the `config.py` to choose other installing tools such as `yum` and `brew`, which imporves a litte capability, while there's a desktop icon config script used `apt update` to add repository key, leading to some exception.
+2. Add clean Wallpapers option. You can delete the sample wallpapers if you don't like them.
+3. Split some functions into several files, which are in `setters`
+4. Supply `server` config and `desktop` config. You can custom your setting.
 
-&ensp;&ensp;This repository contains my personal dotfiles and auto-setup tools through **python and bash** script. The master version is tested on **Ubuntu 16.04 LTS**. It may also work on other Debian or Ubuntu linux systems. When it goes to Mac, you may need to change some files in `/script` since I use `apt-get` to set the machine.
+## 1. Overview
+&ensp;&ensp;This repository contains my personal dotfiles and auto-setup tools through **python and bash** script. The master version is tested on **Ubuntu 16.04 LTS**. It may also work on other Debian or Ubuntu linux systems. When it goes to Mac, you may need to modify the `config.py` to use the correspoding tool.
 
 &ensp;&ensp;It is welcomed to fork and change it for yourself. All you need to change is the personal setting config. Replacing some config with utils you prefer, then you can **use it to easily set up** a personalized environment when you move to a new machine or when you reinstall the system. ***I hope it can give all freshman an easy framework to start with***.
 
@@ -16,6 +22,7 @@
 ### 1) Preparation
 
 1. Install git, then execute this command in bash:`git clone https://github.com/longjj/dotfiles`
+2. Modify the `config.py` to use your corresponding installing tool
 2. Modify the `/scripts/setupGit.sh`,**<font size=5>set your own git global config</font>**. Then, if you want to totally use my config, you can **go to step (2) directly**.
 
 #### The Overview of the Directories
@@ -25,6 +32,7 @@
 3. `/wallpaper` is just a directory to store several my favouraite commic heroes wallpapers as example. You can remove it if you don't like it.
 4. `/vim` and `/tmux` are the directories that store **vim** and **tmux** plugins or useful custom setting files.
 5. In `/vim`, there is a directory `/tempfiles` which contains three hidden directories `/.undo`, `/.swp` and `/.backup`. These directories collect all the temp files that vim create when you are using vim.
+6. `/setters` is a python module which supports the `setup.py`
 
 ### 2) Eexecute Commands
 ```bash
@@ -64,6 +72,6 @@ As for me, I still need to manually install `atom editor` and `Chinese Pinyin In
 
 ----
 ## 5. My Config Result Overview
-![config_result](https://github.com/longjj/dotfiles/blob/master/wallpaper/screenshot.png)
+![config_result](https://github.com/longjj/dotfiles/blob/master/screenshot.png)
 
 I hope it can give you help or inspiration!
