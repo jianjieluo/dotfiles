@@ -36,7 +36,7 @@ def ln_new_dotfiles(dotfile_list):
             print "link %s failed!" % f
 
 
-def initialize():
+def server_setup():
     print "Check for basic softwares..."
     utils.bash_config(setup_url, 'basicInstall.sh')
 
@@ -55,10 +55,11 @@ def initialize():
     print "Update global .gitconfig..."
     utils.bash_config(setup_url, 'setupGit.sh')
 
-
-def personalize():
     print "Begin to install nodejs 6.x ..."
     utils.bash_config(setup_url, 'nodejs6Xinstall.sh')
+
+
+def personal_desktop_setup():
 
     print "Begin to install personal utils from apt..."
     utils.bash_config(setup_url, 'personalInstall.sh')
@@ -87,19 +88,26 @@ if __name__ == '__main__':
             clean_gitrepos_config()
         elif sys.argv[1] == 'dev':
             new_try()
+        elif sys.argv[1] == 'server':
+            server_setup()
+        elif sys.argv[1] == 'desktop':
+            server_setup()
+            print "Do you want to execute the personal setting? (yes/no) (Default is no)"
+            is_personalized = ''
+            choice = raw_input()
+            if choice == 'yes':
+                personal_desktop_setup()
+                print "Personalized Done!!"
+            else:
+                print "initialization Process Finished !"
         else:
             print "Invalid argv."
-            print "Options: \'clean\', \'dev\' or no argv"
+            print "Options: \'clean\', \'dev\', 'server', 'desktop'"
             print "Run it again, please :)"
     elif l > 2:
         print "Too much commands argv!"
     elif l == 1:
-        initialize()
-        print "Do you want to execute the personal setting? (yes/no) (Default is no)"
-        is_personalized = ''
-        choice = raw_input()
-        if choice == 'yes':
-            personalize()
-            print "Personalized Done!!"
-        else:
-            print "initialization Process Finished !"
+        print "You should add an argv."
+        print "Invalid argv."
+        print "Options: \'clean\', \'dev\', 'server', 'desktop'"
+        print "Run it again, please :)"
