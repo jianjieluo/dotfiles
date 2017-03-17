@@ -64,6 +64,6 @@ As for me, I still need to manually install `atom editor` and `Chinese Pinyin In
 
 ----
 ## 5. My Config Result Overview
-![config_result](https://github.com/longjj/dotfiles/blob/master/wallpaper/screenshot.png)
+![config_result](https://github.com/longjj/dotfiles/blob/master/screenshot.png)
 
 I hope it can give you help or inspiration!

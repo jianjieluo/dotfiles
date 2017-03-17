@@ -16,3 +16,11 @@ def check_and_clean_old_link(url):
 
 def bash_config(setup_url, name):
     os.system('bash {0}/scripts/{1} {2}'.format(setup_url, name, install_tool))
+
+
+def clean_wallpaper(setup_url):
+    wallpaper_url = os.path.join(setup_url, 'wallpaper')
+    l = os.listdir(wallpaper_url)
+    for each in l:
+        if each != ".gitignore":
+            os.remove(each)

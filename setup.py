@@ -12,9 +12,9 @@
 
 import sys
 import os
-import utils
-import vimsetter
-import tmuxsetter
+from setters import utils
+from setters import vimsetter
+from setters import tmuxsetter
 
 home_url = os.path.expanduser('~')
 setup_url = os.getcwd()
@@ -90,10 +90,16 @@ if __name__ == '__main__':
             new_try()
         elif sys.argv[1] == 'server':
             server_setup()
+            utils.clean_wallpaper(setup_url)
         elif sys.argv[1] == 'desktop':
             server_setup()
+
+            print "Do you want to delete the sample wallpapers? (yes/no) (Default is no)"
+            choice = raw_input()
+            if choice == 'yes':
+                utils.clean_wallpaper(setup_url)
+
             print "Do you want to execute the personal setting? (yes/no) (Default is no)"
-            is_personalized = ''
             choice = raw_input()
             if choice == 'yes':
                 personal_desktop_setup()
