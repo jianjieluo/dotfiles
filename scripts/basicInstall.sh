@@ -3,8 +3,9 @@
 software_leak_filling() {
   if [ ! -x "/usr/bin/$1" ] ; then
     echo "Installing $1..."
-    apt-get install $1
+    $2 install $1
   else
+    # echo "$2 Installing $1..."
     echo "System has already haven $1"
   fi
 }
@@ -12,7 +13,7 @@ software_leak_filling() {
 terminal_get_list=(git vim tmux zsh curl)
 
 for name in ${terminal_get_list[@]}; do
-  software_leak_filling $name
+  software_leak_filling $name $1
 done
 
 

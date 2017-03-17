@@ -5,13 +5,13 @@ utils=(tree locate guake)
 codings=(clang clang-format pip)
 display=(unity-tweak-tool wallch)
 
-apt_get_lists=(
+install_lists=(
 ${utils[@]}
 ${codings[@]}
 ${display[@]}
 )
 
 # Begin to apt get install
-for name in ${apt_get_lists[@]}; do
-  apt-get install $name
+for name in ${install_lists[@]}; do
+  $1 install $name
 done
