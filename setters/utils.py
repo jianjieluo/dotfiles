@@ -21,6 +21,8 @@ def bash_config(setup_url, name):
 def clean_wallpaper(setup_url):
     wallpaper_url = os.path.join(setup_url, 'wallpaper')
     l = os.listdir(wallpaper_url)
-    for each in l:
-        if each != ".gitignore":
-            os.remove(each)
+    for picture_name in l:
+        if picture_name != ".gitignore":
+            picture_url = os.path.join(wallpaper_url, picture_name)
+            # print picture_url
+            os.remove(picture_url)
