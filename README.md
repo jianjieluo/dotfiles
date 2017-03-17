@@ -3,7 +3,7 @@
 
 ## 0. Change log
 ### 2017.03.17
-1. Now you can modify the config.py to choose other installing tools such as `yum` and `brew`, which imporves a litte capability, while there's a desktop icon config script used `apt update` to add repository key, leading to some exception.
+1. Now you can modify the `config.py` to choose other installing tools such as `yum` and `brew`, which imporves a litte capability, while there's a desktop icon config script used `apt update` to add repository key, leading to some exception.
 2. Add clean Wallpapers option. You can delete the sample wallpapers if you don't like them.
 3. Split some functions into several files, which are in `setters`
 4. Supply `server` config and `desktop` config. You can custom your setting.
