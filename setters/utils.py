@@ -15,7 +15,8 @@ def check_and_clean_old_link(url):
 
 
 def bash_config(setup_url, name):
-    os.system('bash {0}/scripts/{1} {2}'.format(setup_url, name, install_tool))
+    os.system(
+        'sudo bash {0}/scripts/{1} {2}'.format(setup_url, name, install_tool))
 
 
 def clean_wallpaper(setup_url):
