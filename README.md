@@ -37,7 +37,7 @@
 ### 2) Eexecute Commands
 ```bash
 cd dotfiles
-./setup.py [option]
+sudo python setup.py [options]
 ```
 #### Option List:
 1. `clean`: clean the old plugins and temp files dir in the repository, which is handy for developing.
