@@ -1,14 +1,12 @@
 # Install personal utils, change the config lists if necessary
 
 # classified apt-get config lists
-utils=(tree locate guake)
-codings=(clang clang-format pip)
-display=(unity-tweak-tool wallch)
+utils=(tree locate pip mysql-server mysql-client)
+# codings=(clang clang-format pip)
 
 install_lists=(
 ${utils[@]}
-${codings[@]}
-${display[@]}
+# ${codings[@]}
 )
 
 # Begin to apt get install

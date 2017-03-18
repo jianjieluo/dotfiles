@@ -1,13 +1,3 @@
-# python file
-#================================================
-#      Filename: setup.py
-#
-#        Author: longj - luojj26@gmail.com
-#   Description: ---
-#   Head Create: 2017-02-16 22:05:33
-# Last Modified: 2017-02-16 22:11:13
-#================================================
-
 #!/usr/bin/env python
 
 import sys
@@ -58,11 +48,14 @@ def server_setup():
     print "Begin to install nodejs 6.x ..."
     utils.bash_config(setup_url, 'nodejs6Xinstall.sh')
 
+    print "Begin to install personal utils ..."
+    utils.bash_config(setup_url, 'personal_server.sh')
+
 
 def personal_desktop_setup():
 
     print "Begin to install personal utils from apt..."
-    utils.bash_config(setup_url, 'personalInstall.sh')
+    utils.bash_config(setup_url, 'personal_desktop.sh')
 
     print "Begin to download some good ubuntu-icons..."
     utils.bash_config(setup_url, 'iconsInstall.sh')
