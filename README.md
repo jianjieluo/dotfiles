@@ -42,6 +42,8 @@ cd dotfiles
 #### Option List:
 1. `clean`: clean the old plugins and temp files dir in the repository, which is handy for developing.
 2. `dev`: If you want to add some new functions in the tool, you can put them in a block in `setup.py`, which will be helpful to your development.
+3. `server`: Install the basic terminal packages which is enough in a server system
+4. `desktop`: Install the basic terminal packages and some gnome utils.
 **With no option, it will config some basic tools.**
 
 #### Basic Tools List:
