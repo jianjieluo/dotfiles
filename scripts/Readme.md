@@ -12,3 +12,5 @@
   (ps, It will use [seebi/dircolors-solarized](https://github.com/seebi/dircolors-solarized) as `.dircolor`)
   2. [guake solarized setting](https://github.com/coolwanglu/guake-colors-solarized)
 
+
+**The first time install zsh it will break down to call the zsh**

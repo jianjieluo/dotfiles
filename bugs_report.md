@@ -1,0 +1,1 @@
+1. can't use `sudo` to get `vundle`, because it will case the permission blocking.

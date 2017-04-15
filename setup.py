@@ -66,7 +66,7 @@ def personal_desktop_setup():
 
 def clean_gitrepos_config():
     os.system("rm -rf ./vim/bundle ./vim/tempfiles ./tmux/plugins")
-    os.system("rm -rf ./third_party")
+    # os.system("rm -rf ./third_party")
 
 
 def new_try():
