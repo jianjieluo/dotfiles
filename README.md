@@ -2,6 +2,10 @@
 `Johnny Law`  `SYSU in Guangdong Province, China`
 
 ## 0. Change log
+
+### 2017.07.10
+Delete something from setup.py for more lightness. Remove `zsh` from the basic installing list.
+
 ### 2017.03.17
 1. Now you can modify the `config.py` to choose other installing tools such as `yum` and `brew`, which imporves a litte capability, while there's a desktop icon config script used `apt update` to add repository key, leading to some exception.
 2. Add clean Wallpapers option. You can delete the sample wallpapers if you don't like them.
