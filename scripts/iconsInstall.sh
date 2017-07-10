@@ -1,8 +1,8 @@
 # DALISHA ICON THEME
 
-add-apt-repository ppa:noobslab/icons
-apt-get update
-apt-get install dalisha-icons
+sudo add-apt-repository ppa:noobslab/icons
+sudo apt-get update
+sudo apt-get install dalisha-icons
 
 # Numix
 

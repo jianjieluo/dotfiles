@@ -6,6 +6,9 @@ sudo $1 install dconf-cli
 git clone https://github.com/Anthony25/gnome-terminal-colors-solarized.git ./third_party/gnome-terminal-colors-solarized
 ./third_party/gnome-terminal-colors-solarized/set_dark.sh
 
-# set guake solarized
-git clone https://github.com/coolwanglu/guake-colors-solarized.git ./third_party/guake-colors-solarized
-./third_party/guake-colors-solarized/set_dark.sh solarized
+if [ -f ./dircolors ]; then
+    echo "Use the dircolor!"
+    eval `dircolors ./dircolors`
+fi
+
+source .bashrc

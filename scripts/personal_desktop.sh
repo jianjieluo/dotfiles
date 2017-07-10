@@ -1,4 +1,4 @@
-display=(unity-tweak-tool wallch guake)
+display=(unity-tweak-tool)
 
 
 install_lists=(
@@ -7,5 +7,5 @@ ${display[@]}
 
 # Begin to apt get install
 for name in ${install_lists[@]}; do
-  $1 install $name
+  sudo $1 install $name
 done

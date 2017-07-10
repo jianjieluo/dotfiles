@@ -23,50 +23,11 @@ def ln_new_dotfiles(dotfile_list):
         try:
             os.symlink(src, dst)
         except:
-            print "link %s failed!" % f
-
-
-def server_setup():
-    print "Check for basic softwares..."
-    utils.bash_config(setup_url, 'basicInstall.sh')
-
-    print "Try to config git..."
-    utils.bash_config(setup_url, 'setupGit.sh')
-
-    print "Config the vim and tmux..."
-    vimsetter.config(setup_url, home_url)
-    tmuxsetter.config(setup_url, home_url)
-
-    print "Begin to ln the dotfiles..."
-    dotfile_list = os.listdir('./dotfiles')
-    clean_old_dotfiles(dotfile_list)
-    ln_new_dotfiles(dotfile_list)
-
-    print "Update global .gitconfig..."
-    utils.bash_config(setup_url, 'setupGit.sh')
-
-    print "Begin to install nodejs 6.x ..."
-    utils.bash_config(setup_url, 'nodejs6Xinstall.sh')
-
-    print "Begin to install personal utils ..."
-    utils.bash_config(setup_url, 'personal_server.sh')
-
-
-def personal_desktop_setup():
-
-    print "Begin to install personal utils from apt..."
-    utils.bash_config(setup_url, 'personal_desktop.sh')
-
-    print "Begin to download some good ubuntu-icons..."
-    utils.bash_config(setup_url, 'iconsInstall.sh')
-
-    print "Begin to set Solarized color scheme for the working environment..."
-    utils.bash_config(setup_url, 'solarizedInstall.sh')
-
+            print ("link %s failed!" % f)
 
 def clean_gitrepos_config():
     os.system("rm -rf ./vim/bundle ./vim/tempfiles ./tmux/plugins")
-    os.system("rm -rf ./third_party")
+    os.system("rm -rf ./third_party/*")
 
 
 def new_try():
@@ -75,38 +36,54 @@ def new_try():
     pass
 
 if __name__ == '__main__':
+
     l = len(sys.argv)
     if l == 2:
         if sys.argv[1] == 'clean':
             clean_gitrepos_config()
-        elif sys.argv[1] == 'dev':
-            new_try()
-        elif sys.argv[1] == 'server':
-            server_setup()
+    elif (l == 1): 
+        # vim and tmux is the must install file
+        utils.bash_config(setup_url, 'basicInstall.sh')
+        print ("Config the vim and tmux...")
+        vimsetter.config(setup_url, home_url)
+        tmuxsetter.config(setup_url, home_url)
+
+        print ("Begin to ln the dotfiles...")
+        dotfile_list = os.listdir('./dotfiles')
+        dotfile_list.remove('.zshrc')
+        clean_old_dotfiles(dotfile_list)
+        ln_new_dotfiles(dotfile_list)
+
+        utils.bash_config(setup_url, 'setupGit.sh')
+
+        print ("Complete basic init. It is alternative installation:")
+
+        print ('If you want to install zsh and use your default dotfile? [y/n]')
+        ch = raw_input()
+        if (ch == 'y'):
+            utils.bash_config(setup_url, 'zshinstall.sh')
+        
+        print ('If you want to install personal Desktop utils? [y/n]')
+        ch = raw_input()
+        if (ch == 'y'):
+            utils.bash_config(setup_url, 'personal_desktop.sh')
+
+        print ("If you want to install some good ubuntu-icons? [y/n]")
+        ch = raw_input()
+        if (ch == 'y'):
+            utils.bash_config(setup_url, 'iconsInstall.sh')
+
+        print ("If you want to install Solarized color scheme for the terminal? [y/n]")
+        ch = raw_input()
+        if (ch == 'y'):
+            utils.bash_config(setup_url, 'solarizedInstall.sh')
+
+        print ("If you want to install node6x? [y/n]")
+        ch = raw_input()
+        if (ch == 'y'):
+            utils.bash_config(setup_url, 'nodejs6Xinstall.sh')
+        
+        print ("Do you want to delete the sample wallpapers? (y/n) (Default is n)")
+        ch = raw_input()
+        if ch == 'y':
             utils.clean_wallpaper(setup_url)
-        elif sys.argv[1] == 'desktop':
-            server_setup()
-
-            print "Do you want to delete the sample wallpapers? (yes/no) (Default is no)"
-            choice = raw_input()
-            if choice == 'yes':
-                utils.clean_wallpaper(setup_url)
-
-            print "Do you want to execute the personal setting? (yes/no) (Default is no)"
-            choice = raw_input()
-            if choice == 'yes':
-                personal_desktop_setup()
-                print "Personalized Done!!"
-            else:
-                print "initialization Process Finished !"
-        else:
-            print "Invalid argv."
-            print "Options: \'clean\', \'dev\', 'server', 'desktop'"
-            print "Run it again, please :)"
-    elif l > 2:
-        print "Too much commands argv!"
-    elif l == 1:
-        print "You should add an argv."
-        print "Invalid argv."
-        print "Options: \'clean\', \'dev\', 'server', 'desktop'"
-        print "Run it again, please :)"
