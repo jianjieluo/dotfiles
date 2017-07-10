@@ -13,5 +13,5 @@ colorscheme solarized
 let g:Powerline_colorscheme='solarized256'
 
 " Show “invisible” characters
-set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
+set lcs=trail:·,eol:¬,nbsp:_
 set list
