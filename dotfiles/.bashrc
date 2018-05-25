@@ -122,8 +122,16 @@ alias ch='xmodmap ~/.Xmodmap'
 
 
 # make the seebi/dircolors-solarized auto reload
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-fi
+#if [ -x /usr/bin/dircolors ]; then
+#    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+#fi
 
-eval `dircolors ~/.dir_colors/dircolors`
+#eval `dircolors ~/.dir_colors/dircolors`
+
+# Virtual Environment Wrapper
+source /usr/local/bin/virtualenvwrapper.sh
+
+# added by Anaconda3 installer
+export PATH="/home/jianjie/anaconda3/bin:$PATH"
+alias py36="source activate py36"
+

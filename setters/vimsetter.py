@@ -1,5 +1,5 @@
 import os
-import utils
+from setters import utils
 
 
 def config_tempfiles(vimconfig_dir):

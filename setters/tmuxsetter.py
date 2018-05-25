@@ -1,5 +1,5 @@
 import os
-import utils
+from setters import utils
 
 
 def config(setup_url, home_url):
